@@ -18,12 +18,12 @@ noteRoutes.post("/create",async(req,res)=>{
 })
 
 noteRoutes.get("/get",async(req,res)=>{
-    const note= await NoteModel.find({username:req.body.username});
+    const note= await NoteModel.find({userId:req.body.userId});
     res.status(200).send(note)
 })
 
 noteRoutes.get("/get/:id",async(req,res)=>{
-    const note= await NoteModel.find({username:req.body.username,_id:req.params.id});
+    const note= await NoteModel.find({userId:req.body.userId,_id:req.params.id});
     res.status(200).send(note)
 })
 
