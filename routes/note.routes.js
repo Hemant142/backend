@@ -14,8 +14,7 @@ noteRoutes.post("/create",async(req,res)=>{
         res.status(200).send({"msg":"new note has been added"})
     }catch(err){
         res.status(400).send({"error":err})
-    }
-    
+    }  
 })
 
 noteRoutes.get("/get",async(req,res)=>{
@@ -23,6 +22,10 @@ noteRoutes.get("/get",async(req,res)=>{
     res.status(200).send(note)
 })
 
+noteRoutes.get("/get/:id",async(req,res)=>{
+    const note= await NoteModel.find({username:req.body.username,_id:req.params.id});
+    res.status(200).send(note)
+})
 
 noteRoutes.patch("/update/:id",auth,async(req,res)=>{
     const {id}=req.params;

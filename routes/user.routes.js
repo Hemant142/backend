@@ -8,8 +8,6 @@ userRoutes.post("/register",async(req,res)=>{
     const {email,pass,username}=req.body;
     console.log(email,pass,username)
 try{
-
-
 bcrypt.hash(pass, 5, async(err, hash)=> {
    const user=new UserModel({email,username,pass:hash})
    await user.save()
